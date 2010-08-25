@@ -69,7 +69,7 @@ if "%HOME%"=="" (
 )
 
 if /i '%1'=='' (
-    start %COMSPEC% /K git --version
+    start sh.exe --login -i
     goto end
 )
 if /i '%1'=='list' (

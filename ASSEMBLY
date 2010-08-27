@@ -3,7 +3,7 @@
 
 1. Introduction
 
-Since the project itself is extemely simple, containing only a couple of script
+Since the project itself is extremely simple, containing only a couple of script
 files and some binary installers, there was little point in creating build and
 assembly scripts. Rather this document was written containing the needed steps
 to create a GitBox distributable package.
@@ -29,17 +29,17 @@ GitBox             // The program root
   - docs           // Documentation
     - gitbox.pdf   // User manual pdf file (generated from the .docx)
   - repos          // Empty folder for the git repositories
-  - setup          // Folder containint installation and configuration files 
+  - setup          // Folder containing installation and configuration files 
     - git          // Setup files for installing git
       - git.exe    // Git for Windows* installer
       - git.sh     // Git installer for *nix flavors
-      - linux.sh   // Git installer for linux distributions
+      - linux.sh   // Git installer for Linux distributions
     - setup.bat    // Windows config file to set the path variable
     - setup.sh     // *nix config file to set execute permissions and symlinks
   - gitbox.bat     // Windows implementation of GitBox
   - gitbox.sh      // *nix implementation of GitBox
   
-* Git for Windows: Since installing git on Windows is not as starightforward as
+* Git for Windows: Since installing git on Windows is not as straightforward as
 in the case of Linux, a binary installer from the msysGit project should be also
 bundled with GitBox. As of writing, the latest stable Git for Windows installer
 can be downloaded from http://code.google.com/p/msysgit/downloads/list . If you

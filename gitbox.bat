@@ -92,14 +92,14 @@ if /i '%1'=='create' (
         rem Since git doesn't like empty repos, place a README in there are save the user a lof of headaches
         set checkout="%TEMP%"\%2
         md !checkout!
-        git clone -o dropbox file://!repository! !checkout!
+        git clone -o gitbox file://!repository! !checkout!
     
         echo Enjoy your GitBox repository > !checkout!\README
         set pwd=%CD%
         cd /d !checkout!
         git add README
         git commit -m "Created the repository"
-        git push dropbox master
+        git push gitbox master
         cd /d !pwd!
     
         rmdir /s /q !checkout!
@@ -110,10 +110,10 @@ if /i '%1'=='create' (
     goto end
 )
 if /i '%1'=='clone' (
-    rem Clone the specified repository with the dropbox repo as the master
+    rem Clone the specified repository with the gitbox repo as the master
     set repository="%repos%"\%2.git
     if exist !repository! (
-        git clone -o dropbox file://!repository!
+        git clone -o gitbox file://!repository!
     ) else (
         echo GitBox couldn't find the repository named: %2
         pause
@@ -135,8 +135,8 @@ if /i '%1'=='import' (
             git init --bare !repository!
 
             rem Add an entry to the list of remote repositories and push to it
-            git remote add dropbox file://!repository!
-            git push dropbox master
+            git remote add gitbox file://!repository!
+            git push gitbox master
         ) else (
             echo A repository named "%2" is already tracked by GitBox.
             pause

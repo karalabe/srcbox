@@ -55,23 +55,23 @@ elif [ "$1" == 'create' ]; then
     
         # Since git doesn't like empty repos, place a README in there are save the user a lof of headaches
         checkout=`mktemp -d`
-        git clone -o dropbox file://$repository $checkout
+        git clone -o gitbox file://$repository $checkout
     
         echo Enjoy your GitBox repository > $checkout/README
         cur_dir=`pwd`
         cd $checkout
         git add README
         git commit -m "Created the repository"
-        git push dropbox master
+        git push gitbox master
         cd $cur_dir
 
         rm -r -f $checkout
     fi
 elif [ "$1" == 'clone' ]; then
-    # Clone the specified repository with the dropbox repo as the master
+    # Clone the specified repository with the gitbox repo as the master
     repository="$gitbox_repos/$2.git"
     if [ -d $repository ]; then
-        git clone -o dropbox file://$repository
+        git clone -o gitbox file://$repository
     else
         echo "GitBox couldn't find the repository named: $2"
     fi
@@ -92,8 +92,8 @@ elif [ "$1" == 'import' ]; then
             (cd $repository && exec git init --bare)
 
             # Add an entry to the list of remote repositories and push to it
-            git remote add dropbox file://$repository
-            git push dropbox master
+            git remote add gitbox file://$repository
+            git push gitbox master
         fi
     fi
 else

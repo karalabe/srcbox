@@ -19,9 +19,9 @@ if %gitbox%==undefined (
         set user_path=%%i %%j
     )
     setx PATH "!user_path!;!gitbox:~0,-7!" 1>nul
-    echo GitBox was successfully configured
+    echo GitBox was successfully configured.
     pause
 ) else (
-    echo GitBox is already configured
+    echo GitBox is already configured.
     pause
 )

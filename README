@@ -2,12 +2,21 @@
 -----------------------------------------------------------
 
 GitBox cross platform tool to host personal private git repositories inside
-Dropbox folders that get automatically syncronised between operating systems,
+Dropbox folders that get automatically synchronized between operating systems,
 machines and backed up on the internet.
 
 Although everything the tool does can be done manually, the goal was to make
 things simple and user friendly without having to remember a long list of git
 commands and paths.
+
+
+Features
+--------
+
+- Listing the repositories tracked by GitBox
+- Creating a new git repository inside GitBox
+- Cloning a git repository from GitBox
+- Imporint an existing git repository into GitBox
 
 
 Sample Usage

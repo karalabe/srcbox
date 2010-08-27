@@ -27,7 +27,7 @@ The structure of the distribution package is as follows:
 
 GitBox             // The program root
   - docs           // Documentation
-    - gitbox.pdf   // User manual pdf file
+    - gitbox.pdf   // User manual pdf file (generated from the .docx)
   - repos          // Empty folder for the git repositories
   - setup          // Folder containint installation and configuration files 
     - git          // Setup files for installing git

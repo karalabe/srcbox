@@ -23,7 +23,7 @@ Installation
 ------------
 
 Please check the user manual available at the download section:
-http://github.com/karalabe/gitbox/downloads
+http://github.com/downloads/karalabe/gitbox/GitBox-0.1.0-UserManual.pdf
 
 
 Sample Usage
@@ -47,9 +47,9 @@ From computer A:
 // Do some work
 // .....
 
-For a full list of supported commands check the user manual included both in the
-installation and downloadable separately too from the project's download page:
-http://github.com/karalabe/gitbox/downloads
+For a full list of supported commands, check the user manual included both in the
+installation package and also downloadable from the project's download page:
+http://github.com/downloads/karalabe/gitbox/GitBox-0.1.0-UserManual.pdf
 
 
 Supported Platforms

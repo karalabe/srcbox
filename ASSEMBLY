@@ -30,10 +30,14 @@ GitBox             // The program root
     - gitbox.pdf   // User manual pdf file
   - repos          // Empty folder for the git repositories
   - setup          // Folder containint installation and configuration files 
-    - dat          // Binary data files
-      - git.exe    // Git for Windows *
+    - git          // Setup files for installing git
+      - git.exe    // Git for Windows* installer
+      - git.sh     // Git installer for *nix flavors
+      - linux.sh   // Git installer for linux distributions
     - setup.bat    // Windows config file to set the path variable
+    - setup.sh     // *nix config file to set execute permissions and symlinks
   - gitbox.bat     // Windows implementation of GitBox
+  - gitbox.sh      // *nix implementation of GitBox
   
 * Git for Windows: Since installing git on Windows is not as starightforward as
 in the case of Linux, a binary installer from the msysGit project should be also

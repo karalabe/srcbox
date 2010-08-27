@@ -9,7 +9,7 @@ setlocal enabledelayedexpansion
 rem Setup some global variables
 set root=%~dp0
 set repos=%root%\repos
-set git_setup="%root%\setup\dat\git.exe"
+set git_setup="%root%\setup\git\git.exe"
 
 rem Look up the git command prompt either in the path or in a couple of predefined places
 set paths=("C:\Program Files\Git", "C:\Program Files (x86)\Git")
@@ -44,7 +44,7 @@ if %git_root%==undefined (
         echo Aborting.
         goto end
     ) else (
-        echo Installing git
+        echo Installing git...
         %git_setup%
         if errorlevel 1 (
             echo GitBox couldn't install git.
@@ -104,7 +104,7 @@ if /i '%1'=='create' (
     
         rmdir /s /q !checkout!
     ) else (
-        echo A repository named "%2" is already tracked by GitBox
+        echo A repository named "%2" is already tracked by GitBox.
         pause
     )
     goto end
@@ -138,12 +138,13 @@ if /i '%1'=='import' (
             git remote add dropbox file://!repository!
             git push dropbox master
         ) else (
-            echo A repository named "%2" is already tracked by GitBox
+            echo A repository named "%2" is already tracked by GitBox.
             pause
         )
     )
     goto end
 )
+echo Unknown GitBox command.
 
 rem Escape clause
 :end

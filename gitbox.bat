@@ -145,6 +145,7 @@ if /i '%1'=='import' (
     goto end
 )
 echo Unknown GitBox command.
+pause
 
 rem Escape clause
 :end

@@ -22,7 +22,7 @@ commands and paths.
   Installation
 ----------------
 
-The project Wiki is uner construction, in the mean time please check the
+The project Wiki is under construction, in the mean time please check the
 [User Manual](http://github.com/downloads/karalabe/gitbox/GitBox-0.1.0-UserManual.pdf)
 available at the download section.
 

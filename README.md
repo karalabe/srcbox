@@ -66,6 +66,17 @@ Partially supported:
 
  - Linux and *nix - Theoretically works. Requires manual git installation.
  - Windows before XP SP2 - Check installation details in the user manual.
+
+
+  Contributions
+-----------------
  
-I'd be grateful for testing on other distros and feedback on them. Also
-implementing automatic installation of git would be fantastic.
+Since I have only a limited number of distros at my disposal, I'd be grateful
+for testing GitBox on others and providing feedback.
+
+Also the partially supported platforms need some work to be fully supported.
+In the case of linux distributions that should be only 3-5 lines of code to
+enable automatic git installation.
+
+If you'd like to lend a hand, simply fork [my repository](http://github.com/karalabe/gitbox), hack away and contact
+me when you'd like to merge something upstream.

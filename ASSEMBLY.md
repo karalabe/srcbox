@@ -1,7 +1,5 @@
   GitBox - Assembly Instructions
-----------------------------------
-
-1. Introduction
+==================================
 
 Since the project itself is extremely simple, containing only a couple of script
 files and some binary installers, there was little point in creating build and
@@ -9,7 +7,7 @@ assembly scripts. Rather this document was written containing the needed steps
 to create a GitBox distributable package.
 
 Note, that the program is designed to be run from within Dropbox, which means
-that executables and required binaries for *all* platforms should be bundled up,
+that executables and required binaries for **all** platforms should be bundled up,
 since the very same "installation" will be used on all platforms.
 
 Should You wish to automate this, you are welcome to do so, but please be aware
@@ -18,26 +16,27 @@ that great emphasis was put on operating system interoperability and all scripts
 builds in Linux, then make sure it/something works in windows too :P).
 
 
-2. Distributable Package
+  Distributable Package
+-------------------------
 
 GitBox is distributed as a simple compressed zip file, which should be extracted
 directly into a Dropbox folder. For details, see the user manual.
 
 The structure of the distribution package is as follows:
 
-GitBox             // The program root
-  - docs           // Documentation
-    - gitbox.pdf   // User manual pdf file (generated from the .docx)
-  - repos          // Empty folder for the git repositories
-  - setup          // Folder containing installation and configuration files 
-    - git          // Setup files for installing git
-      - git.exe    // Git for Windows* installer
-      - git.sh     // Git installer for *nix flavors
-      - linux.sh   // Git installer for Linux distributions
-    - setup.bat    // Windows config file to set the path variable
-    - setup.sh     // *nix config file to set execute permissions and symlinks
-  - gitbox.bat     // Windows implementation of GitBox
-  - gitbox.sh      // *nix implementation of GitBox
+    GitBox             // The program root
+      - docs           // Documentation
+        - gitbox.pdf   // User manual pdf file (generated from the .docx)
+      - repos          // Empty folder for the git repositories
+      - setup          // Folder containing installation and configuration files 
+        - git          // Setup files for installing git
+          - git.exe    // Git for Windows* installer
+          - git.sh     // Git installer for *nix flavors
+          - linux.sh   // Git installer for Linux distributions
+        - setup.bat    // Windows config file to set the path variable
+        - setup.sh     // *nix config file to set execute permissions and symlinks
+      - gitbox.bat     // Windows implementation of GitBox
+      - gitbox.sh      // *nix implementation of GitBox
   
 * Git for Windows: Since installing git on Windows is not as straightforward as
 in the case of Linux, a binary installer from the msysGit project should be also

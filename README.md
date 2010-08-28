@@ -23,7 +23,8 @@ commands and paths.
 ----------------
 
 The project Wiki is uner construction, in the mean time please check the
-[User Manual](http://github.com/downloads/karalabe/gitbox/GitBox-0.1.0-UserManual.pdf) available at the download section.
+[User Manual](http://github.com/downloads/karalabe/gitbox/GitBox-0.1.0-UserManual.pdf)
+available at the download section.
 
 
   Sample Usage
@@ -48,18 +49,21 @@ From computer A:
     // .....
 
 Until the project Wiki will be completed, for a full list of supported commands,
-check the [User Manual](http://github.com/downloads/karalabe/gitbox/GitBox-0.1.0-UserManual.pdf) included both in the installation package and also
-downloadable from the project's download page.
+check the [User Manual](http://github.com/downloads/karalabe/gitbox/GitBox-0.1.0-UserManual.pdf)
+included both in the installation package and also downloadable from the
+project's download page.
 
 
   Supported Platforms
 -----------------------
 
 Fully supported:
+
  - OpenSuSE 11.1+
  - Windows XP SP2+, Vista, Win 7
  
 Partially supported:
+
  - Linux and *nix - Theoretically works. Requires manual git installation.
  - Windows before XP SP2 - Check installation details in the user manual.
  

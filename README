@@ -1,7 +1,7 @@
   GitBox - Git repository hosting inside a Dropbox folder
 -----------------------------------------------------------
 
-GitBox cross platform tool to host personal private git repositories inside
+GitBox is a cross platform tool to host personal private git repositories inside
 Dropbox folders that get automatically synchronized between operating systems,
 machines and backed up on the internet.
 

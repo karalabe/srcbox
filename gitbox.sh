@@ -21,7 +21,7 @@ while [ "`type -P git`" == '' ]; do
             exit
         else
             echo "Installing git..."
-            sh $git_setup
+            bash $git_setup
             if [ $? -ne 0 ]; then
                 echo "GitBox couldn't install git."
                 exit 1

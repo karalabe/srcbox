@@ -59,6 +59,7 @@ project's download page.
 
 Fully supported:
 
+ - Fedora (not released yet)
  - OpenSuSE 11.1+
  - Ubuntu (not released yet)
  - Windows XP SP2+, Vista, Win 7

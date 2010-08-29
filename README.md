@@ -60,6 +60,7 @@ project's download page.
 Fully supported:
 
  - OpenSuSE 11.1+
+ - Ubuntu (not released yet)
  - Windows XP SP2+, Vista, Win 7
  
 Partially supported:

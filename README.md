@@ -13,6 +13,7 @@ commands and paths.
   Features
 ------------
 
+ - Automatic git installation and configuration
  - Listing the repositories tracked by GitBox
  - Creating a new git repository inside GitBox
  - Cloning a git repository from GitBox
@@ -60,6 +61,7 @@ project's download page.
 Fully supported:
 
  - Fedora (not released yet)
+ - Mac OS X (not released yet)
  - OpenSuSE 11.1+
  - Ubuntu (not released yet)
  - Windows XP SP2+, Vista, Win 7

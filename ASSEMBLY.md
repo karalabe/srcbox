@@ -13,7 +13,7 @@ since the very same "installation" will be used on all platforms.
 Should You wish to automate this, you are welcome to do so, but please be aware
 that great emphasis was put on operating system interoperability and all scripts
 (build ones included) should conform to it. (i.e. if you implement automated
-builds in Linux, then make sure it/something works in windows too :P).
+builds in Linux, then make sure it/something works in Windows too :P).
 
 
   Distributable Package
@@ -30,17 +30,25 @@ The structure of the distribution package is as follows:
       - repos          // Empty folder for the git repositories
       - setup          // Folder containing installation and configuration files 
         - git          // Setup files for installing git
-          - git.exe    // Git for Windows* installer
+          - git.exe    // Git for Windows\* installer
+          - git.pkg    // Git package for Mac OS X\**
           - git.sh     // Git installer for *nix flavors
           - linux.sh   // Git installer for Linux distributions
+          - macos.sh   // Git installer for Mac OS X
         - setup.bat    // Windows config file to set the path variable
         - setup.sh     // *nix config file to set execute permissions and symlinks
       - gitbox.bat     // Windows implementation of GitBox
       - gitbox.sh      // *nix implementation of GitBox
   
-* Git for Windows: Since installing git on Windows is not as straightforward as
+\* Git for Windows: Since installing git on Windows is not as straightforward as
 in the case of Linux, a binary installer from the msysGit project should be also
 bundled with GitBox. As of writing, the latest stable Git for Windows installer
 can be downloaded from http://code.google.com/p/msysgit/downloads/list . If you
 bundle a newer version of Git for Windows than previously done, please make sure
 it actually works.
+
+\** Git for Mac OS X: As in the case of Windows, installing git on Mac OS X is
+harder that it should be, so a binary package from the git-osx-installer project
+is bundled up with GitBox. The latest git packages can be downloaded from
+http://code.google.com/p/git-osx-installer/downloads/list . Take care, that these
+are image files (.dmg), and the package (.pkg) should be extracted first.

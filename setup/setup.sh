@@ -1,19 +1,28 @@
 #!/bin/bash
 
 # Define some global variables
-setup_path=`readlink -f $0`
-gitbox_path="`dirname $setup_path`/../gitbox.sh"
+setup_path=`dirname $0`
+gitbox_path="`pwd`/$setup_path/../gitbox.sh"
 
-# Set execute permissions and link into user's bin folder
+# Set execute permissions
 chmod +x $gitbox_path
 
-if [ ! -d $HOME/bin ]; then
-    mkdir -p $HOME/bin
-    echo "Created a bin folder in your home directory."
-    echo "Please re-login to update your path accordingly."
-    echo
-fi
+# Create a symlink to the gitbox script
+mkdir -p $HOME/bin
 (cd $HOME/bin && exec ln -s -f $gitbox_path gitbox)
 
-echo "GitBox was successfully configured."
+# Make sure the symlink is in the user's path
+if [ "`type -P gitbox`" == '' ]; then
+    if [ ! -f $HOME/.profile ]; then
+        echo 'PATH=$PATH:$HOME/bin\n' > $HOME/.profile
+    else
+        setter=`cat $HOME/.profile | grep '$HOME/bin'`
+        if [ "$setter" == '' ]; then
+            echo '\nPATH=$PATH:$HOME/bin\n' >> $HOME/.profile
+        fi
+    fi
+    echo "Please re-login to finalize GitBox configuration."
+    echo
+fi
 
+echo "GitBox was successfully configured."

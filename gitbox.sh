@@ -1,13 +1,26 @@
 #!/bin/bash
 
-# Define some global variables
-gitbox_path=`readlink -f $0`
-gitbox_root=`dirname $gitbox_path`
-gitbox_repos="$gitbox_root/repos"
-git_setup="$gitbox_root/setup/git/git.sh"
+# Get the canonical path without readlink -f (OsX doesn't support it)
+# The code below is the same as gitbox_path=`readlink -f $0`
+dir=`pwd`
+
+cd `dirname $0`
+target=`basename $0`
+while [ -L "$target" ]; do
+    target=`readlink $target`
+    cd `dirname $target`
+    target=`basename $target`
+done
+
+gitbox_path="`pwd -P`/$target"
+cd $dir
+
+# Define some global variables (readlink is missing in OsX, thus the hack)
+gitbox_repos="`dirname $gitbox_path`/repos"
+git_setup="`dirname $gitbox_path`/setup/git/git.sh"
 
 # Make sure git is available and offer to install it otherwise
-while [ "`type -P git`" == '' ]; do
+if [ "`type -P git`" == '' ]; then
     if [ "$git_path" == '' ]; then
         echo "GitBox couldn't locate a valid git installation."
         echo
@@ -27,12 +40,12 @@ while [ "`type -P git`" == '' ]; do
                 exit 1
             else
                 echo "Git successfully installed."
-                echo "Continuing with initial command."
-                echo
+                echo "Please reissue the command in a new terminal to ensure git is accessible."
+                exit 0
             fi
         fi
     fi
-done
+fi
 git_path=`type -P git`
 
 # If git was found, execute any requested operation, or simply start the git shell

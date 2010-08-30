@@ -86,23 +86,26 @@ if /i '%1'=='create' (
     set repository="%repos%"\%2.git
     if not exist !repository! (
         rem Create a new empty repository
+        echo Creating empty repository...
         md !repository!
-        git init --bare !repository!
+        git init --quiet --bare !repository!
     
         rem Since git doesn't like empty repos, place a README in there are save the user a lof of headaches
+        echo Initializing new repository...
         set checkout="%TEMP%"\%2
         md !checkout!
-        git clone -o gitbox file://!repository! !checkout!
+        git clone --quiet --origin gitbox file://!repository! !checkout! 2>nul
     
         echo Enjoy your GitBox repository > !checkout!\README
         set pwd=%CD%
         cd /d !checkout!
         git add README
-        git commit -m "Created the repository"
-        git push gitbox master
+        git commit --quiet -m "Created the repository" 2>nul
+        git push --quiet gitbox master 2>nul
         cd /d !pwd!
     
         rmdir /s /q !checkout!
+        echo Repository successfully created.
     ) else (
         echo A repository named "%2" is already tracked by GitBox.
         pause
@@ -113,7 +116,9 @@ if /i '%1'=='clone' (
     rem Clone the specified repository with the gitbox repo as the master
     set repository="%repos%"\%2.git
     if exist !repository! (
-        git clone -o gitbox file://!repository!
+        echo Cloning repository...
+        git clone --quiet --origin gitbox file://!repository!
+        echo Repository successfully cloned.
     ) else (
         echo GitBox couldn't find the repository named: %2
         pause
@@ -131,12 +136,15 @@ if /i '%1'=='import' (
         rem Create a new empty repository
         set repository="%repos%"\%2.git
         if not exist !repository! (
+            echo Creating empty repository...
             md !repository!
-            git init --bare !repository!
+            git init --quiet --bare !repository!
 
             rem Add an entry to the list of remote repositories and push to it
+            echo Importing data into new repository...
             git remote add gitbox file://!repository!
-            git push gitbox master
+            git push --quiet gitbox master
+            echo Repository successfully imported.
         ) else (
             echo A repository named "%2" is already tracked by GitBox.
             pause

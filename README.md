@@ -37,7 +37,7 @@ and a list of [samples and tutorials](http://github.com/karalabe/gitbox/wiki/Sam
 to get you started right away.
 
 All of these can also be found in the project's user manual available at the
-[download] section(http://github.com/karalabe/gitbox/downloads).
+[download](http://github.com/karalabe/gitbox/downloads) section.
 
 
   Very Basic Sample Usage

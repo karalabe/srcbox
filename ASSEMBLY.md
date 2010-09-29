@@ -30,8 +30,8 @@ The structure of the distribution package is as follows:
       - repos          // Empty folder for the git repositories
       - setup          // Folder containing installation and configuration files 
         - git          // Setup files for installing git
-          - git.exe    // Git for Windows\* installer
-          - git.pkg    // Git package for Mac OS X\**
+          - git.exe    // Git for Windows* installer
+          - git.pkg    // Git package for Mac OS X**
           - git.sh     // Git installer for *nix flavors
           - linux.sh   // Git installer for Linux distributions
           - macos.sh   // Git installer for Mac OS X

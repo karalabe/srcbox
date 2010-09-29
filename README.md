@@ -31,13 +31,13 @@ commands and paths.
 --------------------------
 
 The [project's wiki](http://github.com/karalabe/gitbox/wiki) contains a
-[detailed installation and configuration section](http://github.com/karalabe/gitbox/wiki/Installing-GitBox),
-a [full command reference](http://github.com/karalabe/gitbox/wiki/Command-Reference)
-and a [list of samples and tutorials](http://github.com/karalabe/gitbox/wiki/Samples-and-Tutorials)
+detailed [installation](http://github.com/karalabe/gitbox/wiki/Installing-GitBox),
+page, a full [command reference](http://github.com/karalabe/gitbox/wiki/Command-Reference)
+and a list of [samples and tutorials](http://github.com/karalabe/gitbox/wiki/Samples-and-Tutorials)
 to get you started right away.
 
 All of these can also be found in the project's user manual available at the
-[download section](http://github.com/karalabe/gitbox/downloads).
+[download] section(http://github.com/karalabe/gitbox/downloads).
 
 
   Very Basic Sample Usage
@@ -62,7 +62,7 @@ From computer A:
     // .....
 
 
-For more, please see the [samples and tutorials](http://github.com/karalabe/gitbox/wiki/Samples-and-Tutorials
+For more, please see the [samples and tutorials](http://github.com/karalabe/gitbox/wiki/Samples-and-Tutorials)
 section in the wiki pages.
 
   Supported Platforms

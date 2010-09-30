@@ -15,6 +15,10 @@ that great emphasis was put on operating system interoperability and all scripts
 (build ones included) should conform to it. (i.e. if you implement automated
 builds in Linux, then make sure it/something works in Windows too :P).
 
+Another thing to take care of is the line endings, since they are different in
+*nix and Windows. Please make sure the shell script line endings are *nix specific
+and the batch file line endings are Windows specific.
+
 
   Distributable Package
 -------------------------
@@ -45,7 +49,8 @@ in the case of Linux, a binary installer from the msysGit project should be also
 bundled with GitBox. As of writing, the latest stable Git for Windows installer
 can be downloaded from http://code.google.com/p/msysgit/downloads/list . If you
 bundle a newer version of Git for Windows than previously done, please make sure
-it actually works.
+it actually works. The name of the correct version to download has the form:
+Git-a.b.c.d-previewYYYYMMDD.exe
 
 \** Git for Mac OS X: As in the case of Windows, installing git on Mac OS X is
 harder that it should be, so a binary package from the git-osx-installer project

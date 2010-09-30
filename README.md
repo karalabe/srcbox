@@ -20,16 +20,28 @@ commands and paths.
  - Imporint an existing git repository into GitBox
 
 
-  Installation
-----------------
+  Planned Features
+--------------------
 
-The project Wiki is under construction, in the mean time please check the
-[User Manual](http://github.com/downloads/karalabe/gitbox/GitBox-0.1.0-UserManual.pdf)
-available at the download section.
+ - Repository backup creation
+ - Repository merging
+ 
+
+  Installation and Usage
+--------------------------
+
+The [project's wiki](http://github.com/karalabe/gitbox/wiki) contains a
+detailed [installation](http://github.com/karalabe/gitbox/wiki/Installing-GitBox),
+page, a full [command reference](http://github.com/karalabe/gitbox/wiki/Command-Reference)
+and a list of [samples and tutorials](http://github.com/karalabe/gitbox/wiki/Samples-and-Tutorials)
+to get you started right away.
+
+All of these can also be found in the project's user manual available at the
+[download](http://github.com/karalabe/gitbox/downloads) section.
 
 
-  Sample Usage
-----------------
+  Very Basic Sample Usage
+---------------------------
 
 From computer A:
     $ gitbox create myapp
@@ -49,27 +61,25 @@ From computer A:
     // Do some work
     // .....
 
-Until the project Wiki will be completed, for a full list of supported commands,
-check the [User Manual](http://github.com/downloads/karalabe/gitbox/GitBox-0.1.0-UserManual.pdf)
-included both in the installation package and also downloadable from the
-project's download page.
 
+For more, please see the [samples and tutorials](http://github.com/karalabe/gitbox/wiki/Samples-and-Tutorials)
+section in the wiki pages.
 
   Supported Platforms
 -----------------------
 
 Fully supported:
 
- - Fedora (not released yet)
- - Mac OS X (not released yet)
+ - Fedora
+ - Mac OS X
  - OpenSuSE 11.1+
- - Ubuntu (not released yet)
+ - Ubuntu
  - Windows XP SP2+, Vista, Win 7
  
 Partially supported:
 
  - Linux and *nix - Theoretically works. Requires manual git installation.
- - Windows before XP SP2 - Check installation details in the user manual.
+ - Windows before XP SP2 - Requires manual configuration.
 
 
   Contributions

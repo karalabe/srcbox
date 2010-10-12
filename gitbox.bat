@@ -73,9 +73,9 @@ if /i '%1'=='' (
     goto end
 )
 if /i '%1'=='list' (
-    rem Iterate through all the hidden directories in the repoo folder and print them
+    rem Iterate through all the directories in the repoo folder and print them
     echo List of repositories tracked by GitBox:
-    for /f "Delims=" %%d in ('dir /ADH /B "%repos%"') do (
+    for /f "Delims=" %%d in ('dir /AD /B "%repos%"') do (
         set dir=%%d
         echo  - !dir:~0,-4!
     )

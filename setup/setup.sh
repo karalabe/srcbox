@@ -14,11 +14,14 @@ mkdir -p $HOME/bin
 # Make sure the symlink is in the user's path
 if [ "`type -P gitbox`" == '' ]; then
     if [ ! -f $HOME/.profile ]; then
-        echo 'PATH=$PATH:$HOME/bin\n' > $HOME/.profile
+        echo 'PATH=$PATH:$HOME/bin' > $HOME/.profile
+        echo >> $HOME/.profile
     else
         setter=`cat $HOME/.profile | grep '$HOME/bin'`
         if [ "$setter" == '' ]; then
-            echo '\nPATH=$PATH:$HOME/bin\n' >> $HOME/.profile
+            echo >> $HOME/.profile
+            echo 'PATH=$PATH:$HOME/bin' >> $HOME/.profile
+            echo >> $HOME/.profile
         fi
     fi
     echo "Please re-login to finalize GitBox configuration."

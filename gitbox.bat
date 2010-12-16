@@ -118,7 +118,11 @@ if /i '%1'=='clone' (
     if exist !repository! (
         echo Cloning repository...
         git clone --quiet --origin gitbox file://!repository!
-        echo Repository successfully cloned.
+        if errorlevel 1 (
+            echo Failed to clone repository.
+        ) else (
+            echo Repository successfully cloned.
+        )
     ) else (
         echo GitBox couldn't find the repository named: %2
         pause

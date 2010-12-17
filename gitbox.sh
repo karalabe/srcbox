@@ -13,7 +13,7 @@ while [ -L "$target" ]; do
 done
 
 gitbox_path="`pwd -P`/$target"
-cd $dir
+cd "$dir"
 
 # Define some global variables (readlink is missing in OSX, thus the hack)
 gitbox_repos="`dirname $gitbox_path`/repos"
@@ -59,18 +59,18 @@ elif [ "$1" == 'list' ]; then
     done  
 elif [ "$1" == 'create' ]; then
     repository="$gitbox_repos/$2.git"
-    if [ -d $repository ]; then
+    if [ -d "$repository" ]; then
         echo "A repository named $2 is already tracked by GitBox."
     else
         # Create a new empty repository
         echo "Creating empty repository..."
-        mkdir -p $repository
-        (cd $repository && exec git init --quiet --bare)
+        mkdir -p "$repository"
+        (cd "$repository" && exec git init --quiet --bare)
     
         # Since git doesn't like empty repos, place a README in there are save the user a lof of headaches
         echo "Initializing new repository..."
         checkout=`mktemp -d gitbox.XXXXXXXX`
-        git clone --quiet --origin gitbox file://$repository $checkout 2>/dev/null
+        git clone --quiet --origin gitbox "file://$repository" $checkout 2>/dev/null
     
         echo "Enjoy your GitBox repository" > $checkout/README
         cur_dir=`pwd`
@@ -86,9 +86,9 @@ elif [ "$1" == 'create' ]; then
 elif [ "$1" == 'clone' ]; then
     # Clone the specified repository with the gitbox repo as the master
     repository="$gitbox_repos/$2.git"
-    if [ -d $repository ]; then
+    if [ -d "$repository" ]; then
         echo "Cloning repository..."
-        git clone --quiet --origin gitbox file://$repository
+        git clone --quiet --origin gitbox "file://$repository"
         echo "Repository successfully cloned."
     else
         echo "GitBox couldn't find the repository named: $2"
@@ -102,17 +102,17 @@ elif [ "$1" == 'import' ]; then
     else
         # Create a new empty repository
         repository="$gitbox_repos/$2.git"
-        if [ -d $repository ]; then
+        if [ -d "$repository" ]; then
             echo "A repository named $2 is already tracked by GitBox."
         else
             # Create a new empty repository
             echo "Creating empty repository..."
-            mkdir -p $repository
-            (cd $repository && exec git init --quiet --bare)
+            mkdir -p "$repository"
+            (cd "$repository" && exec git init --quiet --bare)
 
             # Add an entry to the list of remote repositories and push to it
             echo "Importing data into new repository..."
-            git remote add gitbox file://$repository
+            git remote add gitbox "file://$repository"
             git push gitbox master 1>&2 2>/dev/null
             echo "Repository successfully imported."
         fi

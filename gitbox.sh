@@ -74,11 +74,11 @@ elif [ "$1" == 'create' ]; then
     
         echo "Enjoy your GitBox repository" > $checkout/README
         cur_dir=`pwd`
-        cd $checkout
+        cd "$checkout"
         git add README
         git commit --quiet -m "Created the repository" 2>/dev/null
         git push gitbox master 1>&2 2>/dev/null
-        cd $cur_dir
+        cd "$cur_dir"
 
         rm -r -f $checkout
         echo "Repository successfully created."

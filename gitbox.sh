@@ -89,7 +89,11 @@ elif [ "$1" == 'clone' ]; then
     if [ -d "$repository" ]; then
         echo "Cloning repository..."
         git clone --quiet --origin gitbox "file://$repository"
-        echo "Repository successfully cloned."
+        if [ $? -ne 0 ]; then
+            echo "Failed to clone repository."
+        else
+            echo "Repository successfully cloned."
+        fi
     else
         echo "GitBox couldn't find the repository named: $2"
     fi

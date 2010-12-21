@@ -83,7 +83,11 @@ if /i '%1'=='list' (
     goto end
 )
 if /i '%1'=='create' (
-    set repository="%repos%"\%2.git
+    rem Strip sorrounding quotes
+    set repo_name=%2
+    set repo_name=!repo_name:"=!
+    
+    set repository="%repos%\!repo_name!.git"
     if not exist !repository! (
         rem Create a new empty repository
         echo Creating empty repository...
@@ -92,12 +96,12 @@ if /i '%1'=='create' (
     
         rem Since git doesn't like empty repos, place a README in there are save the user a lof of headaches
         echo Initializing new repository...
-        set checkout="%TEMP%"\%2
+        set checkout="%TEMP%\!repo_name!"
         md !checkout!
         git clone --quiet --origin gitbox file://!repository! !checkout! 2>nul
     
         echo Enjoy your GitBox repository > !checkout!\README
-        set pwd=%CD%
+        set pwd="%CD%"
         cd /d !checkout!
         git add README
         git commit --quiet -m "Created the repository" 2>nul
@@ -107,16 +111,21 @@ if /i '%1'=='create' (
         rmdir /s /q !checkout!
         echo Repository successfully created.
     ) else (
-        echo A repository named "%2" is already tracked by GitBox.
+        echo A repository named "!repo_name!" is already tracked by GitBox.
         pause
     )
     goto end
 )
 if /i '%1'=='clone' (
+    rem Strip sorrounding quotes
+    set repo_name=%2
+    set repo_name=!repo_name:"=!
+
     rem Clone the specified repository with the gitbox repo as the master
-    set repository="%repos%"\%2.git
+    set repository="%repos%\!repo_name!.git"
     if exist !repository! (
         echo Cloning repository...
+        echo !repository!
         git clone --quiet --origin gitbox file://!repository!
         if errorlevel 1 (
             echo Failed to clone repository.
@@ -124,7 +133,7 @@ if /i '%1'=='clone' (
             echo Repository successfully cloned.
         )
     ) else (
-        echo GitBox couldn't find the repository named: %2
+        echo GitBox couldn't find the repository named: !repo_name!
         pause
     )
     goto end
@@ -137,8 +146,12 @@ if /i '%1'=='import' (
         echo you need to invoke the command from within the repo.
         pause
     ) else (
+        rem Strip sorrounding quotes
+        set repo_name=%2
+        set repo_name=!repo_name:"=!
+
         rem Create a new empty repository
-        set repository="%repos%"\%2.git
+        set repository="%repos%\!repo_name!.git"
         if not exist !repository! (
             echo Creating empty repository...
             md !repository!
@@ -150,7 +163,7 @@ if /i '%1'=='import' (
             git push --quiet gitbox master
             echo Repository successfully imported.
         ) else (
-            echo A repository named "%2" is already tracked by GitBox.
+            echo A repository named "!repo_name!" is already tracked by GitBox.
             pause
         )
     )

@@ -123,4 +123,9 @@ elif [ "$1" == 'import' ]; then
     fi
 else
     echo "Unknown GitBox command."
+    echo "Gitbox commands list:"
+    echo "  list          Lists all the git repositories tracked by GitBox."
+    echo "  create <repo> Creates a new empty git repository called <repo> inside the GitBox repository collection."
+    echo "  import <repo> Imports an existing git repository into GitBox(remote called gibox)."
+    echo "  clone <repo>  Clones a git repository called <repo> from the GitBox collection into the current folder(remote called gitbox)."
 fi

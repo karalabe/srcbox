@@ -170,11 +170,15 @@ if /i '%1'=='import' (
     goto end
 )
 echo Unknown GitBox command.
-echo Gitbox commands list:
+echo.
+echo Gitbox command list:
 echo   list          Lists all the git repositories tracked by GitBox.
-echo   create <repo> Creates a new empty git repository called <repo> inside the GitBox repository collection.
-echo   import <repo> Imports an existing git repository into GitBox (remote called gitbox).
-echo   clone  <repo> Clones a git repository called <repo> from the GitBox collection into the current folder (remote called gitbox).
+echo   create ^<repo^> Creates a new empty git repository called ^<repo^> inside the
+echo                 GitBox repository collection.
+echo   clone  ^<repo^> Clones a git repository called ^<repo^> from the GitBox
+echo                 collection into the current folder (remote called gitbox).
+echo   import ^<repo^> Imports an existing git repository into GitBox (remote
+echo                 called gitbox).
 pause
 
 rem Escape clause

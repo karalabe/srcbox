@@ -54,9 +54,11 @@ if [ "$1" == '' ]; then
 elif [ "$1" == 'list' ]; then
     # Iterate through all the directories in the repo folder and print them
     echo "List of repositories tracked by GitBox:"
-    for repo in `ls $gitbox_repos`; do
-        echo " - `echo $repo | cut -d '.' -f 1`"
-    done  
+
+	for repo in $gitbox_repos/*; do
+		echo "$repo"
+		#echo ${repo} | sed 's/.*/\([a-z]*\).git$/\1/'
+	done  
 elif [ "$1" == 'create' ]; then
     repository="$gitbox_repos/$2.git"
     if [ -d "$repository" ]; then

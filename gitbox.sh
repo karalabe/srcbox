@@ -56,8 +56,9 @@ elif [ "$1" == 'list' ]; then
     echo "List of repositories tracked by GitBox:"
 
 	for repo in $gitbox_repos/*; do
-		echo "$repo"
-		#echo ${repo} | sed 's/.*/\([a-z]*\).git$/\1/'
+		repo=${repo%.git}
+		repo=${repo##*/}
+		echo " - $repo"
 	done  
 elif [ "$1" == 'create' ]; then
     repository="$gitbox_repos/$2.git"

@@ -1,1 +1,3 @@
+# Ignore repo collection if development is done on a live deployment
 repos
+

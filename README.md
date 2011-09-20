@@ -44,6 +44,7 @@ All of these can also be found in the project's user manual available at the
 ---------------------------
 
 From computer A:
+
     $ gitbox create myapp
     $ gitbox clone myapp
 
@@ -53,10 +54,12 @@ From computer A:
     $ git push gitbox
 
 From computer B:
+
     $ gitbox clone myapp
     // Do some work and push as previously
 
 From computer A:
+
     $ git pull gitbox master
     // Do some work
     // .....

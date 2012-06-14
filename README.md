@@ -9,7 +9,6 @@ Although everything the tool does can be done manually, the goal was to make
 things simple and user friendly without having to remember a long list of git
 commands and paths.
 
-
   Features
 ------------
 
@@ -19,13 +18,11 @@ commands and paths.
  - Cloning a git repository from GitBox
  - Imporint an existing git repository into GitBox
 
-
   Planned Features
 --------------------
 
  - Repository backup creation
  - Repository merging
- 
 
   Installation and Usage
 --------------------------

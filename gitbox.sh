@@ -52,13 +52,31 @@ git_path=`type -P git`
 if [ "$1" == '' ]; then
     git --version
 elif [ "$1" == 'list' ]; then
-    # Iterate through all the directories in the repo folder and print them
-    echo "List of repositories tracked by GitBox:"
-    for repo in $gitbox_repos/*; do
-        repo=${repo%.git}
-        repo=${repo##*/}
-        echo " - $repo"
-    done  
+    # Get the group name or the default (all) and indentation (internal)
+    group=${2:-"."}
+    indent=${3:-" "}
+    if [ "$3" == "" ]; then
+        echo "List of repositories tracked by GitBox:"
+    fi
+
+    folders=`ls "$gitbox_repos/$group/" | wc -l`
+    if [ "$folders" -ne 0 ]; then
+        # Iterate through all the groups and print recursively
+        for folder in "$gitbox_repos/$group"/*; do
+            if [ "$folder" == "${folder%.git}" ]; then
+                folder=${folder##*/}
+                echo "${indent}+ $folder"
+                $0 list "$group/$folder" "$indent  "
+            fi
+        done
+
+        # Iterate through all the directories in the repo folder and print them
+        for repo in "$gitbox_repos/$group"/*.git; do
+            repo=${repo%.git}
+            repo=${repo##*/}
+            echo "${indent}- $repo"
+        done  
+    fi
 elif [ "$1" == 'create' ]; then
     repository="$gitbox_repos/$2.git"
     if [ -d "$repository" ]; then

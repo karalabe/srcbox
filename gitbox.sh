@@ -147,7 +147,7 @@ else
     echo "Unknown GitBox command."
     echo
     echo "Gitbox command list:"
-    echo "  list   [group] Lists all the git repositories tracked by GitBox."
+    echo "  list   [group] Lists all the git repositories tracked by GitBox. The optional group lists only a subgroup of the maintained repos."
     echo "  create <repo>  Creates a new empty git repository called <repo> inside the GitBox repository collection."
     echo "  clone  <repo>  Clones a git repository called <repo> from the GitBox collection into the current folder (remote called gitbox)."
     echo "  import <repo>  Imports an existing git repository into GitBox (remote called gitbox)."

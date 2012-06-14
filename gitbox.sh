@@ -71,10 +71,12 @@ elif [ "$1" == 'list' ]; then
         done
 
         # Iterate through all the directories in the repo folder and print them
-        for repo in "$gitbox_repos/$group"/*.git; do
-            repo=${repo%.git}
-            repo=${repo##*/}
-            echo "${indent}- $repo"
+        for repo in "$gitbox_repos/$group"/*; do
+            if [ "$repo" != "${repo%.git}" ]; then
+                repo=${repo%.git}
+                repo=${repo##*/}
+                echo "${indent}- $repo"
+            fi
         done  
     fi
 elif [ "$1" == 'create' ]; then

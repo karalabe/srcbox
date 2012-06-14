@@ -192,7 +192,7 @@ if /i '%1'=='import' (
 echo Unknown GitBox command.
 echo.
 echo Gitbox command list:
-echo   list   [group] Lists all the git repositories tracked by GitBox.  The optional
+echo   list   [group] Lists all the git repositories tracked by GitBox. The optional
 echo                  group lists only a subgroup of the maintained repos.
 echo   create ^<repo^>  Creates a new empty git repository called ^<repo^> inside the
 echo                  GitBox repository collection.

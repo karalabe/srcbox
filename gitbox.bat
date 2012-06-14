@@ -18,8 +18,8 @@ set git_root=undefined
 set base_path=("%PATH:;=" "%")
 for %%p in %base_path% do (
     if exist %%p\git.exe (
-        set base=%%p
-        set git_root=!base:~0,-4!
+        set base=%%~p
+        set git_root="!base:~0,-4!"
     )
 )
 if %git_root%==undefined (
@@ -27,7 +27,6 @@ if %git_root%==undefined (
         if exist %%p\bin\git.exe set git_root=%%p
     )
 )
-
 rem If the git couldn't be found, offer to install it
 if %git_root%==undefined (
     echo GitBox couldn't locate a valid git installation.
@@ -62,7 +61,7 @@ if %git_root%==undefined (
 )
 
 rem If git was found, execute any requested operation, or simply start the git shell
-set PATH=%git_root%\bin;%git_root%\cmd;%PATH%
+set PATH=%git_root:"=%\bin;%git_root:"=%\cmd;%PATH%
 set PLINK_PROTOCOL=ssh
 if "%HOME%"=="" (
     set HOME=%USERPROFILE%
@@ -73,13 +72,34 @@ if /i '%1'=='' (
     goto end
 )
 if /i '%1'=='list' (
-    rem Iterate through all the directories in the repoo folder and print them
-    echo List of repositories tracked by GitBox:
-    for /f "Delims=" %%d in ('dir /AD /B "%repos%"') do (
-        set dir=%%d
-        echo  - !dir:~0,-4!
+     rem Get the group name or the default (all) and indentation (internal)
+    set group=%~2
+    if '%2'=='' set group=.
+    set indent=%~3
+    if '%3'=='' (
+        set "indent= "
+        echo List of repositories tracked by GitBox:
     )
-    pause
+    
+    rem Iterate through all the groups in the requested folder and print them
+    for /f "Delims=" %%d in ('dir /AD /B "%repos%\!group!"') do (
+        set folder=%%d
+        if not '!folder:~-4!'=='.git' (
+            echo !indent!+ !folder!
+            call %0 list "!group!/!folder!" "  !indent!"
+        )
+    )
+    
+    rem Iterate through all the repositories in the requested folder and print them
+    for /f "Delims=" %%d in ('dir /AD /B "%repos%\!group!"') do (
+        set dir=%%d
+        if '!dir:~-4!'=='.git' (
+            echo !indent!- !dir:~0,-4!
+        )
+    )
+    if '%3'=='' (
+        pause
+    )
     goto end
 )
 if /i '%1'=='create' (

@@ -13,10 +13,10 @@ commands and paths.
 ------------
 
  - Automatic git installation and configuration
- - Listing the repositories tracked by GitBox
  - Creating a new git repository inside GitBox
+ - Listing the repositories tracked by GitBox
  - Cloning a git repository from GitBox
- - Imporint an existing git repository into GitBox
+ - Importing an existing git repository into GitBox
 
   Planned Features
 --------------------
@@ -35,7 +35,6 @@ to get you started right away.
 
 All of these can also be found in the project's user manual available at the
 [download](http://github.com/karalabe/gitbox/downloads) section.
-
 
   Very Basic Sample Usage
 ---------------------------
@@ -61,7 +60,6 @@ From computer A:
     // Do some work
     // .....
 
-
 For more, please see the [samples and tutorials](http://github.com/karalabe/gitbox/wiki/Samples-and-Tutorials)
 section in the wiki pages.
 
@@ -80,7 +78,6 @@ Partially supported:
 
  - Linux and *nix - Theoretically works. Requires manual git installation.
  - Windows before XP SP2 - Requires manual configuration.
-
 
   Contributions
 -----------------

@@ -69,6 +69,7 @@ section in the wiki pages.
 Fully supported:
 
  - Fedora
+ - Linux Mint
  - Mac OS X
  - OpenSuSE 11.1+
  - Ubuntu

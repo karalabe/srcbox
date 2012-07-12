@@ -16,7 +16,7 @@ if [ -f /etc/SuSE-release ]; then
         echo "Please install git manually."
         exit 1
     fi
-# Ubuntu distribution
+# Ubuntu and derivative distributions
 elif [ -f /etc/lsb-release ]; then
     dist=`cat /etc/lsb-release | grep _ID | tr -d "\n" | sed s/.*=//`
     ver=`cat /etc/lsb-release | grep _REL | tr -d "\n" | sed s/.*=//`
@@ -25,7 +25,12 @@ elif [ -f /etc/lsb-release ]; then
         echo "Installing git with sudo apt-get..."
         sudo apt-get --assume-yes install git-core
         exit
-    fi
+    elif [ "$dist" == 'LinuxMint' ]; then
+        echo "Linut Mint v$ver found."
+        echo "Installing git with sudo apt-get..."
+        sudo apt-get --assume-yes install git-core
+        exit
+	fi
 # Fedora distribution
 elif [ -f /etc/fedora-release ]; then
     dist=`cat /etc/fedora-release | tr "\n" ' ' | sed s/\ release.*//`

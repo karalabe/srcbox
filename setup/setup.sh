@@ -2,17 +2,17 @@
 
 # Define some global variables
 setup_path=`dirname $0`
-gitbox_path="`pwd`/$setup_path/../gitbox.sh"
+srcbox_path="`pwd`/$setup_path/../srcbox.sh"
 
 # Set execute permissions
-chmod +x $gitbox_path
+chmod +x $srcbox_path
 
-# Create a symlink to the gitbox script
+# Create a symlink to the srcbox script
 mkdir -p $HOME/bin
-(cd $HOME/bin && exec ln -s -f $gitbox_path gitbox)
+(cd $HOME/bin && exec ln -s -f $srcbox_path srcbox)
 
 # Make sure the symlink is in the user's path
-if [ "`type -P gitbox`" == '' ]; then
+if [ "`type -P srcbox`" == '' ]; then
     if [ ! -f $HOME/.profile ]; then
         echo 'PATH=$PATH:$HOME/bin' > $HOME/.profile
         echo >> $HOME/.profile
@@ -24,8 +24,8 @@ if [ "`type -P gitbox`" == '' ]; then
             echo >> $HOME/.profile
         fi
     fi
-    echo "Please re-login to finalize GitBox configuration."
+    echo "Please re-login to finalize SrcBox configuration."
     echo
 fi
 
-echo "GitBox was successfully configured."
+echo "SrcBox was successfully configured."

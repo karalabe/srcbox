@@ -1,3 +1,7 @@
+GitBox is currently being transitioned to SrcBox, adding support for additional
+versioning systems (mercurial for starters). Until the transition is complete, the
+source tree should be considered unstable.
+
   GitBox - Git repository hosting inside a Dropbox folder
 ===========================================================
 

@@ -13,19 +13,19 @@ mkdir -p $HOME/bin
 
 # Make sure the symlink is in the user's path
 if [ "`type -P srcbox`" == '' ]; then
-    if [ ! -f $HOME/.profile ]; then
-        echo 'PATH=$PATH:$HOME/bin' > $HOME/.profile
-        echo >> $HOME/.profile
-    else
-        setter=`cat $HOME/.profile | grep '$HOME/bin'`
-        if [ "$setter" == '' ]; then
-            echo >> $HOME/.profile
-            echo 'PATH=$PATH:$HOME/bin' >> $HOME/.profile
-            echo >> $HOME/.profile
-        fi
+  if [ ! -f $HOME/.profile ]; then
+    echo 'PATH=$PATH:$HOME/bin' > $HOME/.profile
+    echo >> $HOME/.profile
+  else
+    setter=`cat $HOME/.profile | grep '$HOME/bin'`
+    if [ "$setter" == '' ]; then
+      echo >> $HOME/.profile
+      echo 'PATH=$PATH:$HOME/bin' >> $HOME/.profile
+      echo >> $HOME/.profile
     fi
-    echo "Please re-login to finalize SrcBox configuration."
-    echo
+  fi
+  echo "Please re-login to finalize SrcBox configuration."
+  echo
 fi
 
 echo "SrcBox was successfully configured."

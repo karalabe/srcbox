@@ -2,7 +2,7 @@
 
 # Creates a new empty git repository with a single README commited.
 function create {
-	repository="$1.git"
+  repository="$1.git"
 
   # Create a new empty repository
   echo "Creating empty git repository..."
@@ -29,7 +29,7 @@ function create {
 
 # Clones a git repository and sets srcbox as the origin.
 function clone {
-	repository="$1.git"
+  repository="$1.git"
 
   echo "Cloning git repository..."
   git clone --quiet --origin srcbox "file://$repository"
@@ -42,7 +42,7 @@ function clone {
 
 # Imports an external git repository into srcbox.
 function import {
-	repository="$1.git"
+  repository="$1.git"
 
   # Create a new empty repository
   echo "Creating empty git repository..."

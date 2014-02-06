@@ -2,7 +2,7 @@
 
 # Creates a new empty mercurial repository with a single README commited.
 function create {
-	repository="$1.hg"
+  repository="$1.hg"
 
   # Initialize the repository with a README file
   echo "Initializing new mercurial repository..."

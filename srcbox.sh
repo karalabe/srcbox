@@ -17,6 +17,7 @@ cd "$dir"
 
 # Define some global variables (readlink is missing in OSX, thus the hack)
 srcbox_repos="`dirname $srcbox_path`/repos"
+srcbox_libs="`dirname $srcbox_path`/libs"
 git_setup="`dirname $srcbox_path`/setup/git/git.sh"
 hg_setup="`dirname $srcbox_path`/setup/hg/hg.sh"
 
@@ -84,7 +85,7 @@ if [ "$1" == 'list' ]; then
                 repo=${repo##*/}
                 echo "${indent}- $repo"
             fi
-        done  
+        done
     fi
 elif [ "$1" == 'create' ]; then
     # Make sure there's a repo to create
@@ -92,8 +93,9 @@ elif [ "$1" == 'create' ]; then
         echo "No repository name specified to create."
         exit 1
     fi
-    git_repo="$srcbox_repos/$2.git"
-    hg_repo="$srcbox_repos/$2.hg"
+    raw_repo="$srcbox_repos/$2"
+    git_repo="$raw_repo.git"
+    hg_repo="$raw_repo.hg"
 
     if [ -d "$git_repo" ] || [ -d "$hg_repo" ]; then
         echo "A repository named $2 is already tracked by SrcBox."
@@ -101,50 +103,9 @@ elif [ "$1" == 'create' ]; then
         if [ "$3" != "git" ] && [ "$3" != "hg" ]; then
             echo "Unsupported or no version control system given: '$3'."
         else
-            # If git is the versioning system, create a bare repo and inject a readme
-            if [ "$3" == "git" ]; then
-                # Create a new empty repository
-                echo "Creating empty git repository..."
-                mkdir -p "$git_repo"
-                (cd "$git_repo" && exec git init --quiet --bare)
-
-                # Since git doesn't like empty repos, place a README in there and save the user a lof of headaches
-                echo "Initializing new git repository..."
-                checkout=`mktemp -d srcbox.XXXXXXXX`
-                git clone --quiet "file://$git_repo" $checkout
-            
-                echo "Enjoy your SrcBox repository" > $checkout/README
-                cur_dir=`pwd`
-                cd "$checkout"
-                git add README
-                git commit --quiet --author="SrcBox <srcbox@karalabe.com>" -m "Created the repository"
-                git push origin master 1>/dev/null
-                cd "$cur_dir"
-
-                rm -r -f "$checkout"
-                echo "Git repository successfully created."
-
-            # If mercurial is the versioning system, create the temporary repo and import into srcbox
-            elif [ "$3" == "hg" ]; then
-                # Initialize the repository with the sole readme
-                echo "Initializing new mercurial repository..."
-                checkout=`mktemp -d srcbox.XXXXXXXX`
-                (cd "$checkout" && exec hg init --quiet)
-
-                echo "Enjoy your SrcBox repository" > $checkout/README
-                cur_dir=`pwd`
-                cd "$checkout"
-                hg add README
-                hg commit --quiet -u "SrcBox <srcbox@karalabe.com>" -m "Created the repository"
-                cd "$cur_dir"
-
-                # Import it into the srcbox repository database
-                mkdir -p "$hg_repo"
-                hg clone "$checkout" "$hg_repo" --noupdate
-
-                rm -r -f "$checkout"
-                echo "Mercurial repository successfully created."
-            fi        
+            # Source the correct library and create the new repository
+            source "$srcbox_libs/$3.sh"
+            create "$raw_repo"
         fi
     fi
 elif [ "$1" == 'clone' ]; then
@@ -153,30 +114,23 @@ elif [ "$1" == 'clone' ]; then
         echo "No repository name specified to clone."
         exit 1
     fi
-    git_repo="$srcbox_repos/$2.git"
-    hg_repo="$srcbox_repos/$2.hg"
+    raw_repo="$srcbox_repos/$2"
+    git_repo="$raw_repo.git"
+    hg_repo="$raw_repo.hg"
 
+    # Find the version control system used
     if [ -d "$git_repo" ]; then
-        # Clone the specified git repository with the srcbox repo as the master
-        echo "Cloning git repository..."
-        git clone --quiet --origin srcbox "file://$git_repo"
-        if [ $? -ne 0 ]; then
-            echo "Failed to clone git repository."
-        else
-            echo "Git repository successfully cloned."
-        fi
+        vcs='git'
     elif [ -d "$hg_repo" ]; then
-        # Clone the specified mercurial repository
-        echo "Cloning mercurial repository..."
-        hg clone --quiet "file://$hg_repo" "$2"
-        if [ $? -ne 0 ]; then
-            echo "Failed to clone mercurial repository."
-        else
-            echo "Mercurial repository successfully cloned."
-        fi
+        vcs='hg'
     else
         echo "SrcBox couldn't find the repository named: $2"
+        exit 1
     fi
+    # Source the correct library and clone the repository
+    source "$srcbox_libs/$vcs.sh"
+    clone "$raw_repo"
+
 elif [ "$1" == 'import' ]; then
     # Make sure there is actually a repository to import
     git rev-parse 1>&2 2>/dev/null
@@ -193,36 +147,15 @@ elif [ "$1" == 'import' ]; then
         vcs='git'
     fi
     # Ensure repository name doesn't clash with existing ones
-    git_repo="$srcbox_repos/$2.git"
-    hg_repo="$srcbox_repos/$2.hg"
+    raw_repo="$srcbox_repos/$2"
+    git_repo="$raw_repo.git"
+    hg_repo="$raw_repo.hg"
 
     if [ -d "$git_repo" ] || [ -d "$hg_repo" ]; then
         echo "A repository named $2 is already tracked by SrcBox."
-    else 
-        if [ "$vcs" == "git" ]; then
-            # Create a new empty repository
-            echo "Creating empty git repository..."
-            mkdir -p "$git_repo"
-            (cd "$git_repo" && exec git init --quiet --bare)
-
-            # Add an entry to the list of remote repositories and push to it
-            echo "Importing data into new git repository..."
-            git remote add srcbox "file://$git_repo"
-            git push srcbox master 1>/dev/null
-
-            echo "Git repository successfully imported."
-        elif [ "$vcs" == "hg" ]; then
-            # Import the repository
-            echo "Importing repository into SrcBox..."
-            mkdir -p "$hg_repo"
-            hg clone . "$hg_repo" --noupdate
-
-            # Add an entry to the list of remote repositories
-            sed "s@\[paths\]@[paths]\nsrcbox = $hg_repo@g" ./.hg/hgrc > ./.hg/hgrc.new
-            mv -f ./.hg/hgrc.new ./.hg/hgrc
-
-            echo "Mercurial repository successfully imported."
-        fi
+    else
+        source "$srcbox_libs/$vcs.sh"
+        import "$raw_repo"
     fi
 else
     echo "Unknown SrcBox command."

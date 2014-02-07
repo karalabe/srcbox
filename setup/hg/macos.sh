@@ -2,7 +2,7 @@
 
 # Define some global variables
 hg_root=`dirname $0`
-hg_macos="$hg_root/hg.pkg"
+hg_macos="$hg_root/hg.mpkg"
 
 # Install the hg package
 echo "Installing hg with sudo..."

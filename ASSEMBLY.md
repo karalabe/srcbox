@@ -70,4 +70,6 @@ should be added to the distributable package.
 
 \**** Mercurial for Mac OS X: Mercurial for OSX should also be bundled into the
 SrcBox distributable package. The http://mercurial.selenic.com/downloads/ site
-hosts these packets too, being in an .mpkg format. If not, ensure it will be :P.
+hosts these packets too, being in a zipped meta pagkace (.mpkg) formet. Extract
+the package (will probably result in a folder under mortal operating systems)
+and insert it among the mercurial kits.

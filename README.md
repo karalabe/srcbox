@@ -5,7 +5,7 @@ GitBox is currently being transitioned to SrcBox, adding support for additional
 versioning systems (mercurial for starters). Until the transition is complete, the
 source tree should be considered unstable.
 
-  SrcBox - Repository hosting inside Dropbox
+  SrcBox - Source code inside Dropbox
 ===========================================================
 
 SrcBox is a cross platform tool to host personal private source repositories

@@ -32,7 +32,7 @@ and a list of [samples and tutorials](http://github.com/karalabe/srcbox/wiki/Sam
 to get you started right away.
 
 All of these can also be found in the project's user manual available at the
-[download](http://github.com/karalabe/srcbox/downloads) section.
+[releases](https://github.com/karalabe/srcbox/releases) section.
 
   Very Basic Sample Usage
 ---------------------------
@@ -71,7 +71,7 @@ Fully supported:
  - Mac OS X
  - OpenSuSE 11.1+
  - Ubuntu
- - Windows XP SP2+, Vista, Win 7
+ - Windows XP SP2+
 
 Partially supported:
 

@@ -9,13 +9,18 @@ Although everything the tool does can be done manually, the goal was to make
 things simple and user friendly without having to remember a long list of DSVC
 commands and paths.
 
-Features include:
+  Features
+------------
+
+Some of the main features of SrcBox are:
 
  - Automatic SVC (git/hg) installation and configuration
  - Creating a new source repository inside SrcBox
  - Listing the repositories tracked by SrcBox
  - Cloning a repository from SrcBox
  - Importing an existing repository into SrcBox
+
+For details, please consult the [project's wiki](http://github.com/karalabe/srcbox/wiki).
 
   Installation and Usage
 --------------------------

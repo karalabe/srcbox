@@ -34,7 +34,7 @@ rem Creates a new empty mercurial repository with a single README commited.
 rem Clones a mercurial repository and sets srcbox as the origin.
 :clone
   rem Extract and quote the parameters
-  set repo_name="%~1"
+  set repo_name="%~nx1"
   set repo_path="%~2.hg"
 
   echo Cloning mercurial repository...

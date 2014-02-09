@@ -1,12 +1,5 @@
-  Warning
------------
-
-GitBox is currently being transitioned to SrcBox, adding support for additional
-versioning systems (mercurial for starters). Until the transition is complete, the
-source tree should be considered unstable.
-
   SrcBox - Source code inside Dropbox
-===========================================================
+=======================================
 
 SrcBox is a cross platform tool to host personal private source repositories
 inside Dropbox folders that get automatically synchronized between operating
@@ -16,8 +9,7 @@ Although everything the tool does can be done manually, the goal was to make
 things simple and user friendly without having to remember a long list of DSVC
 commands and paths.
 
-  Features
-------------
+Features include:
 
  - Automatic SVC (git/hg) installation and configuration
  - Creating a new source repository inside SrcBox
@@ -42,17 +34,17 @@ All of these can also be found in the project's user manual available at the
 
 From computer A:
 
-    $ srcbox create myapp git
-    $ srcbox clone myapp
+    $ srcbox create my_world_chaging_project git
+    $ srcbox clone my_world_chaging_project
 
     // Do some work
     $ git add <some files>
-    $ git commit -m "Commit message"
+    $ git commit -m "Yay, ended world hunger!!!"
     $ git push srcbox
 
 From computer B:
 
-    $ srcbox clone myapp
+    $ srcbox clone my_world_chaging_project
     // Do some work and push as previously
 
 From computer A:

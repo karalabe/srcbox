@@ -1,0 +1,47 @@
+// 12345.cpp: определяет точку входа для консольного приложения.
+//
+//srand(time(NULL));
+#include "stdafx.h"
+#include <conio.h>
+#include <iostream>
+#include <stdlib.h>
+#include <time.h>
+const int N=4, M=3;
+using namespace std;
+void RandomMatrix(int a[N][M])
+{	int i,j;
+	for(i=0;i<N;i++)
+		for(j=0;j<M;j++)
+			a[i][j]=rand()%6;			
+}
+
+void PrintMatrix(int a[N][M], int n, int m)
+{	int i,j;
+	cout<<"\n";
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<m;i++)
+			cout<<a[i][j]<<" ";
+		cout<<"\n";
+}
+void FormB(int a[N][M], int b[N/2][M]);
+float Hi(float *a, int n);
+{	
+	int i,j;
+	for(i=0;i<N/2;i++)
+		for(j=0;j<m;j++)
+		b[i][j]=a[i*2][j];
+
+}
+
+int _tmain(int argc, _TCHAR* argv[])
+{setlocale(LC_ALL,"Russian");
+	float a[n];
+RandomArray(a,n);
+	PrintArray(a,n);
+	Hi(a,n);
+	_getch();
+	return 0;
+}
+
+
